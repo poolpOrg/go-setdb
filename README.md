@@ -105,6 +105,24 @@ ERR: cyclic reference is forbidden
 setdb>
 ```
 
+They are not typed and can contain integers and strings at this point,
+I'll decide later if I want to be more strict but I don't see a value.
+```sh
+setdb> fruits = {'grape', 'orange', 'strawberry'}
+['grape' 'orange' 'strawberry']
+setdb> vegetables = {'spinash', 'onions'}
+['spinash' 'onions']
+setdb> healthy = {fruits | vegetables}
+['grape' 'orange' 'spinash' 'onions' 'strawberry']
+setdb> gross = {'onions'}
+['onions']
+setdb> healthy
+['onions' 'orange' 'strawberry' 'grape' 'spinash']
+setdb> healthy - gross
+['orange' 'strawberry' 'spinash' 'grape']
+setdb>
+```
+
 ## What's missing ?
 
 - code cleanup
