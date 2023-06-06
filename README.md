@@ -106,7 +106,10 @@ setdb>
 ```
 
 They are not typed and can contain integers and strings at this point,
-I'll decide later if I want to be more strict but I don't see a value.
+including both in the same set.
+I have yet to decide if I want to have strict type checking on sets,
+which is trivial to implement,
+I just don't see a reason why at this point.
 ```sh
 setdb> fruits = {'grape', 'orange', 'strawberry'}
 ['grape' 'orange' 'strawberry']
@@ -120,6 +123,12 @@ setdb> healthy
 ['onions' 'orange' 'strawberry' 'grape' 'spinash']
 setdb> healthy - gross
 ['orange' 'strawberry' 'spinash' 'grape']
+setdb> mixed = {'grape', 1, 2, 3, 'watermelon'}
+['grape' 1 2 3 'watermelon']
+etdb> mixed & {1,2}
+[1 2]
+setdb> mixed & 'grape'             
+['grape']
 setdb>
 ```
 
