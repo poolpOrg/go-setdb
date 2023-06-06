@@ -2,6 +2,10 @@
 
 WIP: this is a work in progress, do not use or you'll feel sorry when you lose data
 
+## Should I use it ?
+
+nope.
+
 
 ## What is SetDB ?
 
@@ -10,11 +14,46 @@ as in set theory,
 and which provides a DSL to query the database for specific set operations.
 
 
+## What's the license for SetDB ?
+
+SetDB is published under the ISC license,
+do what you want with it but keep the copyright in place and don't complain if code blows up.
+
+```
+Copyright (c) 2023 Gilles Chehade <gilles@poolp.org>
+
+Permission to use, copy, modify, and distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+```
+
+## But doesn't solution X, Y, Z already do that ?
+
+Yes,
+you can technically use several solutions ranging from full-blown SQL databases to data structure servers,
+however they are not necessarily all very practical for the use-cases that I have.
+Also,
+I like writing code so sometimes I do it just because.
+
+
 ## How does it work ?
 
 SetDB manipulates two kind of sets:
 persistent sets and transient sets,
 the former being persisted across queries and the latter existing solely as a result set.
+
+It provides a very basic query language,
+currently only supporting operations that return result sets (union, intersection, difference, symmetric difference).
+The query language allows the creation of new sets but isn't complete yet and doesn't cover operations not returning sets (subset of, superset of, ...).
+
 
 ```sh
 $ setdb-cli
@@ -66,9 +105,19 @@ ERR: cyclic reference is forbidden
 setdb>
 ```
 
-## TBD
+## What's missing ?
+
+- code cleanup
+- do a pass to decide on final syntax for the DSL
+- implement set dereference so a set can contain the content of another set, not the other set itself (ie: `x = {*y}`)
+- implement various caching strategies (some were implemented but temporarily removed)
+- disk and memory optimizations have been discussed, they are just not implemented yet
 
 
 
+## Special thanks
+This project was worked on partly during my spare time and partly during my work time,
+at [VeepeeTech](https://github.com/veepee-oss),
+with many insights from [@aromeyer](https://github.com/aromeyer) who had to endure multiple duck-debugging sessions.
 
 
