@@ -52,7 +52,7 @@ the former being persisted across queries and the latter existing solely as a re
 
 It provides a very basic query language,
 currently only supporting operations that return result sets (union, intersection, difference, symmetric difference).
-The query language allows the creation of new sets but isn't complete yet and doesn't cover operations not returning sets (subset of, superset of, ...).
+The query language allows the creation of new sets but isn't complete yet and doesn't cover operations not returning sets (subset of, superset of, ... though they are actually implemented already behind the scene).
 
 
 ```sh
