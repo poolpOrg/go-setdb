@@ -101,13 +101,20 @@ func main() {
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "ERR: %s\n", err)
 			}
-			fmt.Println(res.StatusCode)
+			//fmt.Println(res.StatusCode)
 			body, err := ioutil.ReadAll(res.Body)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "ERR: %s\n", err)
 
 			}
-			fmt.Println(string(body))
+
+			var result []string
+			err = json.Unmarshal(body, &result)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "ERR: %s\n", err)
+			} else {
+				fmt.Println(result)
+			}
 		} else {
 			fmt.Printf("setdb> ")
 			scanner := bufio.NewScanner(os.Stdin)
@@ -127,7 +134,7 @@ func main() {
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "ERR: %s\n", err)
 				}
-				fmt.Println(res.StatusCode)
+				//fmt.Println(res.StatusCode)
 				body, err := ioutil.ReadAll(res.Body)
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "ERR: %s\n", err)
@@ -137,9 +144,9 @@ func main() {
 				err = json.Unmarshal(body, &result)
 				if err != nil {
 					fmt.Fprintf(os.Stderr, "ERR: %s\n", err)
-
+				} else {
+					fmt.Println(result)
 				}
-				fmt.Println(result)
 				fmt.Printf("setdb> ")
 			}
 
