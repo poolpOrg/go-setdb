@@ -115,6 +115,14 @@ setdb>
 
 
 
+## Code
+
+For now, the code is a moving target, so unless you know what you're doing, don't import it.
+
+Otherwise, look atht the example implementations in cmd/,
+one implements a server and the other a command line tool that also ships a client.
+
+
 ## Special thanks
 This project was worked on partly during my spare time and partly during my work time,
 at [VeepeeTech](https://github.com/veepee-oss),
